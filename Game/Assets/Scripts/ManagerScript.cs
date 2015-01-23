@@ -89,6 +89,8 @@ public class ManagerScript : MonoBehaviour {
 				playerControlList.First(p => p.Number == nextToKill).destroyScript.DestroyMe();
 				playerControlList.First(p => p.Number == nextToKill).IsUsed = false;
 				nextToKill++;
+				if(nextToKill == 4)
+					nextToKill = 0;
 			}
 		}
 	}
