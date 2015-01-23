@@ -36,12 +36,20 @@ public class Character2DController : MonoBehaviour {
 		if (Input.GetKey(leftKey))
 		{
 			direction = -1f;
-		} 
-		else if (Input.GetKey(rightKey))
+		}
+
+		if (Input.GetKey(rightKey))
 		{
 			direction = 1f;
 		}
-		else
+
+
+		if (!Input.GetKey(leftKey) && !Input.GetKey(rightKey))
+		{
+			direction = 0f;
+		}
+
+		if (Input.GetKey(leftKey) && Input.GetKey(rightKey))
 		{
 			direction = 0f;
 		}
