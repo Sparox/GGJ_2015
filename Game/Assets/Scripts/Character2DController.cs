@@ -16,7 +16,11 @@ public class Character2DController : MonoBehaviour {
 
 	private enum actionType
 	{
-		Jump
+		Jump,
+		BrokingWall,
+		Actionner,
+		Killer,
+		Sorcerer
 	};
 
 	private actionType type;
