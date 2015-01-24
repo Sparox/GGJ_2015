@@ -13,27 +13,19 @@ public class Character2DController : MonoBehaviour {
 	public KeyCode leftKey;
 	public KeyCode rightKey;
 	private PlatformerCharacter2D character;
-	public Transform BlocPrefab;
-	private bool canCreateBlock = true;
 	private System.Random r = new System.Random();
-	private enum actionType
-	{
-		Jump,
-		BrokingWall,
-		//Actionner,
-		//Killer,
-		//Sorcerer
-	};
 
-	private actionType type;
+
+	public ActionType type;
 
 	private float direction = 0f;
+	private float playerToFlyVerticalDirection = 0f;
 
+	private Transform playerToFly;
+	private bool hasPlayerToFly = false;
 	private void Awake()
 	{
-		var values = Enum.GetValues (typeof(actionType));
 		character = GetComponent<PlatformerCharacter2D> ();
-		type = (actionType)values.GetValue (r.Next (values.Length));
 	}
 
 
@@ -42,50 +34,85 @@ public class Character2DController : MonoBehaviour {
 
 		if (Input.GetKey(leftKey))
 		{
-			direction = -1f;
+			if (hasPlayerToFly)
+			{
+				playerToFlyVerticalDirection = -1f;
+			}
+			else
+			{
+				direction = -1f;
+			}
 		}
 
 		if (Input.GetKey(rightKey))
 		{
-			direction = 1f;
+			if (hasPlayerToFly)
+			{
+				playerToFlyVerticalDirection = 1f;
+			}
+			else
+			{
+				direction = 1f;
+			}
 		}
 
-
-		if (!Input.GetKey(leftKey) && !Input.GetKey(rightKey))
+		if (Input.GetKey(leftKey) == Input.GetKey(rightKey))
 		{
-			direction = 0f;
-		}
-
-		if (Input.GetKey(leftKey) && Input.GetKey(rightKey))
-		{
-			direction = 0f;
+			if (hasPlayerToFly)
+			{
+				playerToFlyVerticalDirection = 0f;
+			}
+			else
+			{
+				direction = 0f;
+			}
 		}
 
 		if(Input.GetKeyDown(actionKey))
 		{
 			switch (type) {
-			case actionType.Jump:
+			case ActionType.Jump:
 				jump = true;
 				break;
-			case actionType.BrokingWall:
+			case ActionType.BrokingWall:
 				var objectToBroke = GameObject.FindGameObjectsWithTag("Breakable")
-					.FirstOrDefault(g => Vector3.Distance(g.transform.position, this.transform.position) <= 1);
-				if (objectToBroke != null)
+					.FirstOrDefault(g => Vector3.Distance(g.transform.position, this.transform.position) <= 1.8f);
+				if (objectToBroke != null && objectToBroke.renderer.enabled)
 				{
 					Destroy(objectToBroke);
+				}
+				break;
+			case ActionType.Switcher:
+				var switchToActivate = GameObject.FindGameObjectsWithTag("Switch")
+					.FirstOrDefault(g => Vector3.Distance(g.transform.position, this.transform.position) <= 1.8f);
+				if (switchToActivate != null && switchToActivate.name == "SwitchBridge")
+				{
+					switchToActivate.rigidbody2D.isKinematic = false;
+					(GameObject.Find("BridgeStop").GetComponent("BoxCollider2D") as BoxCollider2D).isTrigger = false;
+					GameObject.Find("Bridge").rigidbody2D.isKinematic = false;
+				}
+				break;
+			case ActionType.Sorcerer:
+				var player = GameObject.FindGameObjectsWithTag("Player")
+					.Where(p => p.transform != this.transform)
+					.OrderBy(p => Vector3.Distance(p.transform.position, this.transform.position)).FirstOrDefault();
+				if (player != null)
+				{
+					hasPlayerToFly = true;
+					playerToFly = player.transform;
 				}
 				break;
 				default:
 				break;
 			}
 		}
+
+		if(type == ActionType.Sorcerer && Input.GetKeyUp(actionKey))
+		{
+			hasPlayerToFly = false;
+		}
 	}
 
-	private void GenerateCube()
-	{
-		var posNewBloc = new Vector3 (this.transform.position.x, this.transform.localPosition.y - 2, this.transform.position.z);
-		//var newBloc = Instantiate (BlocPrefab, posNewBloc, Quaternion.identity);
-	}
 
 	private void FixedUpdate()
 	{
@@ -97,11 +124,8 @@ public class Character2DController : MonoBehaviour {
 		float h = direction;
 		// Pass all parameters to the character control script.
 		character.Move(h, false, jump);
-
+		if(hasPlayerToFly && playerToFly != null)
+			(playerToFly.GetComponent ("PlatformerCharacter2D") as PlatformerCharacter2D).MoveVerticaly (playerToFlyVerticalDirection);
 		jump = false;
-		/*if(!canCreateBlock && character.IsGrounded())
-		{
-			canCreateBlock = true;
-		}*/
 	}
 }

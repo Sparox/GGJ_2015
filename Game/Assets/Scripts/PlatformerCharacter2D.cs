@@ -48,8 +48,12 @@ namespace UnitySampleAssets._2D
 			return grounded;
 		}
 
-
-        public void Move(float move, bool crouch, bool jump)
+		public void MoveVerticaly(float move)
+		{
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x+0.01f, move*maxSpeed);
+		}
+		
+		public void Move(float move, bool crouch, bool jump)
         {
 
 

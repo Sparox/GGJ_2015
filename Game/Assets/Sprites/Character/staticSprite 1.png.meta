@@ -1,41 +1,41 @@
 fileFormatVersion: 2
-guid: 8fb98a6035269e64a998f9b56828fc4f
+guid: 306b4b91eee099b4b9359d7c32b864dc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: RobotBoyIdle00
-    21300002: RobotBoyIdle01
-    21300004: RobotBoyIdle02
-    21300006: RobotBoyIdle03
-    21300008: RobotBoyIdle04
-    21300010: RobotBoyIdle05
-    21300012: RobotBoyIdle06
-    21300014: RobotBoyIdle07
-    21300016: RobotBoyIdle08
-    21300018: RobotBoyIdle09
-    21300020: RobotBoyIdle10
-    21300022: RobotBoyIdle11
-    21300024: RobotBoyIdle12
-    21300026: RobotBoyIdle13
-    21300028: RobotBoyIdle14
-    21300030: RobotBoyIdle15
-    21300032: RobotBoyIdle16
-    21300034: RobotBoyIdle17
-    21300036: RobotBoyIdle18
-    21300038: RobotBoyIdle19
-    21300040: RobotBoyIdle20
-    21300042: RobotBoyIdle21
-    21300044: RobotBoyIdle22
-    21300046: RobotBoyIdle23
-    21300048: RobotBoyIdle24
-    21300050: RobotBoyIdle25
-    21300052: RobotBoyIdle26
-    21300054: RobotBoyIdle27
-    21300056: RobotBoyIdle28
-    21300058: RobotBoyIdle29
+    21300000: staticSprite 1_0
+    21300002: staticSprite 1_1
+    21300004: staticSprite 1_2
+    21300006: staticSprite 1_3
+    21300008: staticSprite 1_4
+    21300010: staticSprite 1_5
+    21300012: staticSprite 1_6
+    21300014: staticSprite 1_7
+    21300016: staticSprite 1_8
+    21300018: staticSprite 1_9
+    21300020: staticSprite 1_10
+    21300022: staticSprite 1_11
+    21300024: staticSprite 1_12
+    21300026: staticSprite 1_13
+    21300028: staticSprite 1_14
+    21300030: staticSprite 1_15
+    21300032: staticSprite 1_16
+    21300034: staticSprite 1_17
+    21300036: staticSprite 1_18
+    21300038: staticSprite 1_19
+    21300040: staticSprite 1_20
+    21300042: staticSprite 1_21
+    21300044: staticSprite 1_22
+    21300046: staticSprite 1_23
+    21300048: staticSprite 1_24
+    21300050: staticSprite 1_25
+    21300052: staticSprite 1_26
+    21300054: staticSprite 1_27
+    21300056: staticSprite 1_28
+    21300058: staticSprite 1_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -52,10 +52,10 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -67,29 +67,13 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: iPhone
-    maxTextureSize: 1024
-    textureFormat: -2
-    compressionQuality: 100
-  - buildTarget: Android
-    maxTextureSize: 1024
-    textureFormat: -1
-    compressionQuality: 50
-  - buildTarget: BlackBerry
-    maxTextureSize: 1024
-    textureFormat: -1
-    compressionQuality: 50
-  - buildTarget: WP8
-    maxTextureSize: 1024
-    textureFormat: -1
-    compressionQuality: 50
+  buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: RobotBoyIdle00
+    - name: staticSprite 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -97,9 +81,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle01
+    - name: staticSprite 1_1
       rect:
         serializedVersion: 2
         x: 275
@@ -107,9 +91,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle02
+    - name: staticSprite 1_2
       rect:
         serializedVersion: 2
         x: 550
@@ -117,9 +101,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle03
+    - name: staticSprite 1_3
       rect:
         serializedVersion: 2
         x: 825
@@ -127,9 +111,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle04
+    - name: staticSprite 1_4
       rect:
         serializedVersion: 2
         x: 1100
@@ -137,9 +121,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle05
+    - name: staticSprite 1_5
       rect:
         serializedVersion: 2
         x: 1375
@@ -147,9 +131,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle06
+    - name: staticSprite 1_6
       rect:
         serializedVersion: 2
         x: 1650
@@ -157,9 +141,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle07
+    - name: staticSprite 1_7
       rect:
         serializedVersion: 2
         x: 0
@@ -167,9 +151,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle08
+    - name: staticSprite 1_8
       rect:
         serializedVersion: 2
         x: 275
@@ -177,9 +161,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle09
+    - name: staticSprite 1_9
       rect:
         serializedVersion: 2
         x: 550
@@ -187,9 +171,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle10
+    - name: staticSprite 1_10
       rect:
         serializedVersion: 2
         x: 825
@@ -197,9 +181,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle11
+    - name: staticSprite 1_11
       rect:
         serializedVersion: 2
         x: 1100
@@ -207,9 +191,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle12
+    - name: staticSprite 1_12
       rect:
         serializedVersion: 2
         x: 1375
@@ -217,9 +201,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle13
+    - name: staticSprite 1_13
       rect:
         serializedVersion: 2
         x: 1650
@@ -227,9 +211,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle14
+    - name: staticSprite 1_14
       rect:
         serializedVersion: 2
         x: 0
@@ -237,9 +221,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle15
+    - name: staticSprite 1_15
       rect:
         serializedVersion: 2
         x: 275
@@ -247,9 +231,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle16
+    - name: staticSprite 1_16
       rect:
         serializedVersion: 2
         x: 550
@@ -257,9 +241,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle17
+    - name: staticSprite 1_17
       rect:
         serializedVersion: 2
         x: 825
@@ -267,9 +251,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle18
+    - name: staticSprite 1_18
       rect:
         serializedVersion: 2
         x: 1100
@@ -277,9 +261,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle19
+    - name: staticSprite 1_19
       rect:
         serializedVersion: 2
         x: 1375
@@ -287,9 +271,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle20
+    - name: staticSprite 1_20
       rect:
         serializedVersion: 2
         x: 1650
@@ -297,9 +281,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle21
+    - name: staticSprite 1_21
       rect:
         serializedVersion: 2
         x: 0
@@ -307,9 +291,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle22
+    - name: staticSprite 1_22
       rect:
         serializedVersion: 2
         x: 275
@@ -317,9 +301,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle23
+    - name: staticSprite 1_23
       rect:
         serializedVersion: 2
         x: 550
@@ -327,9 +311,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle24
+    - name: staticSprite 1_24
       rect:
         serializedVersion: 2
         x: 825
@@ -337,9 +321,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle25
+    - name: staticSprite 1_25
       rect:
         serializedVersion: 2
         x: 1100
@@ -347,9 +331,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle26
+    - name: staticSprite 1_26
       rect:
         serializedVersion: 2
         x: 1375
@@ -357,9 +341,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle27
+    - name: staticSprite 1_27
       rect:
         serializedVersion: 2
         x: 1650
@@ -367,9 +351,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle28
+    - name: staticSprite 1_28
       rect:
         serializedVersion: 2
         x: 0
@@ -377,9 +361,9 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: RobotBoyIdle29
+    - name: staticSprite 1_29
       rect:
         serializedVersion: 2
         x: 275
@@ -387,7 +371,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
