@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnitySampleAssets._2D;
+using System.Linq;
+using System;
 
 
 [RequireComponent(typeof (PlatformerCharacter2D))]
@@ -13,14 +15,14 @@ public class Character2DController : MonoBehaviour {
 	private PlatformerCharacter2D character;
 	public Transform BlocPrefab;
 	private bool canCreateBlock = true;
-
+	private System.Random r = new System.Random();
 	private enum actionType
 	{
 		Jump,
 		BrokingWall,
-		Actionner,
-		Killer,
-		Sorcerer
+		//Actionner,
+		//Killer,
+		//Sorcerer
 	};
 
 	private actionType type;
@@ -29,8 +31,9 @@ public class Character2DController : MonoBehaviour {
 
 	private void Awake()
 	{
+		var values = Enum.GetValues (typeof(actionType));
 		character = GetComponent<PlatformerCharacter2D> ();
-		type = actionType.Jump;
+		type = (actionType)values.GetValue (r.Next (values.Length));
 	}
 
 
@@ -61,8 +64,16 @@ public class Character2DController : MonoBehaviour {
 		if(Input.GetKeyDown(actionKey))
 		{
 			switch (type) {
-				case actionType.Jump:
-					jump = true;
+			case actionType.Jump:
+				jump = true;
+				break;
+			case actionType.BrokingWall:
+				var objectToBroke = GameObject.FindGameObjectsWithTag("Breakable")
+					.FirstOrDefault(g => Vector3.Distance(g.transform.position, this.transform.position) <= 1);
+				if (objectToBroke != null)
+				{
+					Destroy(objectToBroke);
+				}
 				break;
 				default:
 				break;
