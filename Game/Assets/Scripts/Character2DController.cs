@@ -89,6 +89,10 @@ public class Character2DController : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+		if(!character.IsGrounded() && direction != 0f && this.transform.rigidbody2D.velocity.x == 0f)
+		{
+			direction  = 0f;
+		}
 		// Read the inputs.
 		float h = direction;
 		// Pass all parameters to the character control script.
