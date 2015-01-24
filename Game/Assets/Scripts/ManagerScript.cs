@@ -2,6 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+
+public enum ActionType
+{
+	Jump,
+	BrokingWall,
+	Switcher,
+	//Killer,
+	Sorcerer
+};
+
+public class ActionTypeInUse
+{
+	public ActionType Type {
+				get;
+				set;
+	}
+	public bool InUse {
+				get;
+				set;
+		}
+}
 
 public class PlayerControl
 {
@@ -30,6 +52,10 @@ public class PlayerControl
 				get;
 				set;
 		}
+	public ActionType type {
+				get;
+				set;
+		}
 }
 
 public class ManagerScript : MonoBehaviour {
@@ -39,8 +65,18 @@ public class ManagerScript : MonoBehaviour {
 	public Transform Spawner;
 	public Transform PlayerPrefab;
 	private int nextToKill = 0;
+	private List<ActionTypeInUse> actionTypeList = new List<ActionTypeInUse> ();
+	private System.Random r = new System.Random();
 	// Use this for initialization
 	void Start () {
+		foreach(var type in Enum.GetValues (typeof(ActionType)))
+		{
+			actionTypeList.Add(new ActionTypeInUse()
+           	{
+				Type = (ActionType)type,
+				InUse = false
+			});
+		}
 		playerControlList.Add (new PlayerControl (){
 			ActionKey = KeyCode.Z,
 			LeftKey = KeyCode.A,
@@ -81,13 +117,20 @@ public class ManagerScript : MonoBehaviour {
 			scriptPlayerController.actionKey = newPlayerControl.ActionKey;
 			scriptPlayerController.leftKey = newPlayerControl.LeftKey;
 			scriptPlayerController.rightKey = newPlayerControl.RightKey;
+
+			var restingType = actionTypeList.Where(a => !a.InUse).ToList();
+			scriptPlayerController.type = restingType[r.Next (restingType.Count)].Type;
 			playerControlList.First(p => !p.IsUsed).destroyScript = (newPlayer as Transform).GetComponent("DestroyPlayer") as DestroyPlayer;
+			actionTypeList.First(a => a.Type == scriptPlayerController.type).InUse = true;
+			playerControlList.First(p => !p.IsUsed).type = scriptPlayerController.type;
 			playerControlList.First(p => !p.IsUsed).IsUsed = true;
 
 			if (playerControlList.Count(p => p.IsUsed) == 4)
 			{
-				playerControlList.First(p => p.Number == nextToKill).destroyScript.DestroyMe();
+				actionTypeList.First(a => a.Type == playerControlList.First(p => p.Number == nextToKill).type).InUse = false;
 				playerControlList.First(p => p.Number == nextToKill).IsUsed = false;
+				playerControlList.First(p => p.Number == nextToKill).destroyScript.DestroyMe();
+
 				nextToKill++;
 				if(nextToKill == 4)
 					nextToKill = 0;

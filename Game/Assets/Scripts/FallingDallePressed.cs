@@ -14,6 +14,7 @@ public class FallingDallePressed : MonoBehaviour {
 		if (collider.tag == "Player")
 		{
 			FallingGround.rigidbody2D.isKinematic = false;
+
 		}
 	}
 	
