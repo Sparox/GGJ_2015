@@ -27,15 +27,15 @@ public class ActionTypeInUse
 
 public class PlayerControl
 {
-	public KeyCode ActionKey {
+	public string ActionKey {
 				get;
 				set;
-	}
-	public KeyCode LeftKey {
+		}
+	public string DirectionKey {
 				get;
 				set;
-	}
-	public KeyCode RightKey {
+		}
+	public string SuicideKey {
 				get;
 				set;
 	}
@@ -77,31 +77,33 @@ public class ManagerScript : MonoBehaviour {
 				InUse = false
 			});
 		}
+
+
 		playerControlList.Add (new PlayerControl (){
-			ActionKey = KeyCode.Z,
-			LeftKey = KeyCode.A,
-			RightKey = KeyCode.E,
+			DirectionKey = "LeftRightController1",
+			ActionKey = "ActionController1",
+			SuicideKey = "StartController1",
 			IsUsed = false,
 			Number = 0
 		});
 		playerControlList.Add (new PlayerControl (){
-			ActionKey = KeyCode.I,
-			LeftKey = KeyCode.U,
-			RightKey = KeyCode.O,
+			DirectionKey = "LeftRightController2",
+			ActionKey = "ActionController2",
+			SuicideKey = "StartController2",
 			IsUsed = false,
 			Number = 1
 		});
 		playerControlList.Add (new PlayerControl (){
-			ActionKey = KeyCode.UpArrow,
-			LeftKey = KeyCode.LeftArrow,
-			RightKey = KeyCode.RightArrow,
+			DirectionKey = "LeftRightController3",
+			ActionKey = "ActionController3",
+			SuicideKey = "StartController3",
 			IsUsed = false,
 			Number = 2
 		});
 		playerControlList.Add (new PlayerControl (){
-			ActionKey = KeyCode.V,
-			LeftKey = KeyCode.C,
-			RightKey = KeyCode.B,
+			DirectionKey = "LeftRightController4",
+			ActionKey = "ActionController4",
+			SuicideKey = "StartController4",
 			IsUsed = false,
 			Number = 3
 		});
@@ -109,21 +111,38 @@ public class ManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space) && playerControlList.Any(p => !p.IsUsed)) 
+
+		int controllerNumber = -1;
+
+		if (Input.GetButtonDown ("StartController1")) 
 		{
-			var newPlayerControl = playerControlList.First(p => !p.IsUsed);
+			controllerNumber = 0;
+			Debug.Log("de meeeeeeeeeerd");
+		}
+		else if (Input.GetButtonDown ("StartController2"))
+			controllerNumber = 1;
+		else if (Input.GetButtonDown ("StartController3"))
+			controllerNumber = 2;
+		else if (Input.GetButtonDown ("StartController4"))
+			controllerNumber = 3;
+		if(controllerNumber != -1)
+			Debug.Log (controllerNumber);
+
+		if (controllerNumber != -1 && playerControlList.Any(p => p.Number == controllerNumber && !p.IsUsed)) 
+		{
+			var newPlayerControl = playerControlList.First(p => p.Number == controllerNumber);
 			var newPlayer = Instantiate(PlayerPrefab, Spawner.position, Quaternion.identity);
 			var scriptPlayerController = (newPlayer as Transform).GetComponent("Character2DController") as Character2DController;
 			scriptPlayerController.actionKey = newPlayerControl.ActionKey;
-			scriptPlayerController.leftKey = newPlayerControl.LeftKey;
-			scriptPlayerController.rightKey = newPlayerControl.RightKey;
+			scriptPlayerController.directionKey = newPlayerControl.DirectionKey;
+			scriptPlayerController.suicideKey = newPlayerControl.SuicideKey;
 
 			var restingType = actionTypeList.Where(a => !a.InUse).ToList();
 			scriptPlayerController.type = restingType[r.Next (restingType.Count)].Type;
-			playerControlList.First(p => !p.IsUsed).destroyScript = (newPlayer as Transform).GetComponent("DestroyPlayer") as DestroyPlayer;
+			playerControlList.First(p => p.Number == controllerNumber).destroyScript = (newPlayer as Transform).GetComponent("DestroyPlayer") as DestroyPlayer;
 			actionTypeList.First(a => a.Type == scriptPlayerController.type).InUse = true;
-			playerControlList.First(p => !p.IsUsed).type = scriptPlayerController.type;
-			playerControlList.First(p => !p.IsUsed).IsUsed = true;
+			playerControlList.First(p => p.Number == controllerNumber).type = scriptPlayerController.type;
+			playerControlList.First(p => p.Number == controllerNumber).IsUsed = true;
 
 			if (playerControlList.Count(p => p.IsUsed) == 4)
 			{
@@ -136,5 +155,12 @@ public class ManagerScript : MonoBehaviour {
 					nextToKill = 0;
 			}
 		}
+	}
+
+	public void PlayerDestroyed(string actionKey)
+	{
+		var type = playerControlList.First (p => p.ActionKey == actionKey).type;
+		playerControlList.First (p => p.ActionKey == actionKey).IsUsed = false;
+		actionTypeList.First (a => a.Type == type).InUse = false;
 	}
 }

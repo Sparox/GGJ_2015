@@ -33,7 +33,7 @@ public class LastWallDallePressed : MonoBehaviour {
 		if (playerCollider != null && lastPlayerPosition != Vector3.zero &&  Vector3.Distance( playerCollider.transform.position, lastPlayerPosition) >= 1f ) {
 			//lastWall.position = initialLastWallPosition;
 
-			if(lastWall.position.y != initialLastWallPosition.y)
+			if(lastWall.position.y < initialLastWallPosition.y)
 			{
 				lastWall.position = new Vector3(lastWall.position.x, lastWall.position.y +0.03f, lastWall.position.z);
 			}
