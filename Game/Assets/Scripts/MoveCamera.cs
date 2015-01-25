@@ -4,8 +4,8 @@ using System.Linq;
 
 public class MoveCamera : MonoBehaviour {
 
-	private float minPosX = -3.98f;
-	private float maxPosX = 8.03f;
+	private float minPosX = -5.8f;
+	private float maxPosX = 9.7f;
 	// Use this for initialization
 	void Start () {
 	

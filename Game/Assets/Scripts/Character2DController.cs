@@ -15,6 +15,8 @@ public class Character2DController : MonoBehaviour {
 	public string suicideKey;
 	private PlatformerCharacter2D character;
 	private System.Random r = new System.Random();
+	private float dieTimer = 0f;
+	private bool mustSuicide = false;
 
 
 	public ActionType type;
@@ -53,12 +55,20 @@ public class Character2DController : MonoBehaviour {
 				timerSuicide = Time.fixedTime;
 			}
 
-			Debug.Log(Time.fixedTime - timerSuicide);
 			if (Time.fixedTime - timerSuicide >= 3f)
 			{
-				(GameObject.Find("GameManager").GetComponent("ManagerScript") as ManagerScript).PlayerDestroyed(actionKey);
-				Destroy(this.gameObject);
+				mustSuicide = true;
+				anim.SetBool("Diying", true);
+				dieTimer = Time.fixedTime;
 			}
+		}
+
+		if(mustSuicide && Time.fixedTime - dieTimer > 3f)
+		{
+			(GameObject.Find("GameManager").GetComponent("ManagerScript") as ManagerScript).PlayerDestroyed(actionKey);
+			anim.SetBool("Diying", false);
+			Destroy(this.gameObject);
+
 		}
 
 		if (Input.GetButtonUp(suicideKey))
@@ -70,6 +80,7 @@ public class Character2DController : MonoBehaviour {
 		{
 			switch (type) {
 			case ActionType.Jump:
+				anim.SetBool("Jump", true);
 				jump = true;
 				break;
 			case ActionType.BrokingWall:
